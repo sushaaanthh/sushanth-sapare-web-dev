@@ -1,14 +1,14 @@
-// Initialize Animations
+// Initialize Animations with a custom easing for smoother feel
 AOS.init({ 
     duration: 1000, 
     once: true,
-    easing: 'ease-out-back'
+    easing: 'ease-out-quad'
 });
 
 // Initialize Lucide Icons
 lucide.createIcons();
 
-// Scroll to Top Function for Profile Photo
+// Scroll to Top Function
 function scrollToTop() {
     window.scrollTo({
         top: 0,
@@ -16,7 +16,7 @@ function scrollToTop() {
     });
 }
 
-// Custom Smooth Scroll for Nav Links
+// Smooth Scroll for Nav Links
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -25,7 +25,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
         
         if (targetElement) {
             window.scrollTo({
-                top: targetElement.offsetTop - 80, // Offset for sticky nav
+                top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
         }
