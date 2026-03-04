@@ -10,13 +10,10 @@ lucide.createIcons();
 
 // Scroll to Top Function
 function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Smooth Scroll for Nav Links with offset for fixed header
+// Smooth Scroll for Nav Links
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();

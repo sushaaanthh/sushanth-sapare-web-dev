@@ -26,8 +26,7 @@ nav {
 .nav-avatar:hover { transform: scale(1.1) rotate(5deg); box-shadow: 0 0 20px var(--accent); }
 .nav-links a { 
     color: var(--text-main); text-decoration: none; margin-left: 2rem; 
-    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; 
-    transition: 0.3s;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
 }
 .nav-links a:hover { color: var(--text-dim); }
 
@@ -40,59 +39,62 @@ header h1 { font-family: var(--font-heading); font-size: clamp(5rem, 18vw, 12rem
 .section { padding: 100px 10%; }
 .section-title { font-family: var(--font-heading); font-size: 4rem; margin-bottom: 3rem; text-transform: uppercase; border-bottom: 2px solid var(--accent); letter-spacing: 2px; }
 
-/* TECHNICAL ARSENAL HOVER */
-.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-.skill-category { 
-    background: #141414; padding: 2.5rem; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    border: 1px solid #222; 
+/* GLOBAL HOVER EFFECT (LIFT + GLOW + INVERT) */
+.skill-category, .project-card, .resp-card, .btn-large {
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #222;
 }
-.skill-category:hover { 
-    background: var(--accent); color: var(--bg); 
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(255,255,255,0.1);
-}
-.skill-category h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; }
-.skill-category ul { list-style: none; font-size: 1rem; opacity: 0.8; }
 
-/* PROJECTS HOVER */
-.project-card { 
-    background: var(--card-bg); padding: 3rem; margin-bottom: 2rem;
-    display: flex; justify-content: space-between; align-items: center;
-    border: 1px solid #222; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+.skill-category:hover, .project-card:hover, .resp-card:hover, .btn-large:hover {
+    background: var(--accent);
+    color: var(--bg);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
 }
-.project-card:hover { 
-    background: var(--accent); color: var(--bg); 
-    transform: scale(1.01) translateY(-5px);
-    box-shadow: 0 15px 30px rgba(255,255,255,0.1);
+
+/* TECHNICAL ARSENAL - BULLET POINTS */
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.skill-category { background: #141414; padding: 2.5rem; }
+.skill-category h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 12px; }
+.skill-category ul { list-style: none; }
+.skill-category li { 
+    position: relative; 
+    padding-left: 20px; 
+    margin-bottom: 0.5rem; 
+    font-size: 1rem; 
+    opacity: 0.9; 
 }
+.skill-category li::before { 
+    content: "→"; 
+    position: absolute; 
+    left: 0; 
+    color: inherit; 
+}
+
+/* PROJECTS */
+.project-container { display: flex; flex-direction: column; gap: 2rem; }
+.project-card { background: var(--card-bg); padding: 3rem; display: flex; justify-content: space-between; align-items: center; }
 .project-info h3 { font-family: var(--font-heading); font-size: 2.5rem; line-height: 1; margin-bottom: 0.5rem; }
 .project-link { background: var(--accent); color: var(--bg); padding: 18px; border-radius: 50%; display: flex; transition: 0.3s; border: 1px solid var(--bg); }
 .project-card:hover .project-link { background: var(--bg); color: var(--accent); transform: rotate(45deg); }
 
-/* EXPERIENCE & LEADERSHIP */
+/* EXPERIENCE */
 .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; margin-bottom: 4rem; }
 .exp-date { font-family: var(--font-heading); color: var(--text-dim); font-size: 1.2rem; }
 .exp-content h3 { font-family: var(--font-heading); font-size: 2.2rem; text-transform: uppercase; line-height: 1; }
 
+/* LEADERSHIP */
 .responsibility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.resp-card { background: var(--card-bg); padding: 3rem; border: 1px solid #222; text-align: center; transition: 0.4s; }
-.resp-card:hover { 
-    background: var(--accent); color: var(--bg); 
-    transform: translateY(-8px);
-}
+.resp-card { background: var(--card-bg); padding: 3rem; text-align: center; }
+.resp-card i { margin-bottom: 1.5rem; width: 32px; height: 32px; }
 .resp-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 0.5rem; text-transform: uppercase; }
 
-/* CONTACT BUTTONS */
+/* CONNECT BUTTONS */
 .contact-buttons { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .btn-large { 
-    padding: 1.5rem 2.5rem; border: 1px solid var(--accent); color: var(--accent);
+    padding: 1.5rem 2.5rem; color: var(--accent);
     text-decoration: none; font-family: var(--font-heading); font-size: 1.4rem; 
-    display: flex; align-items: center; gap: 12px; transition: 0.4s;
-}
-.btn-large:hover { 
-    background: var(--accent); color: var(--bg); 
-    transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+    display: flex; align-items: center; gap: 12px;
 }
 
 footer { padding: 4rem 10%; text-align: left; border-top: 1px solid #1a1a1a; color: var(--text-dim); }
