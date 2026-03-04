@@ -1,8 +1,8 @@
-// Initialize Animations with a custom easing for smoother feel
+// Initialize Animations
 AOS.init({ 
-    duration: 1000, 
+    duration: 800, 
     once: true,
-    easing: 'ease-out-quad'
+    easing: 'ease-out-sine'
 });
 
 // Initialize Lucide Icons
@@ -16,7 +16,7 @@ function scrollToTop() {
     });
 }
 
-// Smooth Scroll for Nav Links
+// Smooth Scroll for Nav Links with offset for fixed header
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -24,8 +24,12 @@ document.querySelectorAll('nav a').forEach(anchor => {
         const targetElement = document.querySelector(targetId);
         
         if (targetElement) {
+            const offset = 80; 
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
             window.scrollTo({
-                top: targetElement.offsetTop - 80,
+                top: offsetPosition,
                 behavior: 'smooth'
             });
         }
