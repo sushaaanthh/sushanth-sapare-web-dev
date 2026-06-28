@@ -120,7 +120,7 @@ header h1 {
     height: clamp(350px, 90vw, 850px);
     z-index: 1;
     pointer-events: none;
-    opacity: 0.12;
+    opacity: 0.22;
 }
 .hero-bg-circles svg {
     width: 100%;
