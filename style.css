@@ -59,11 +59,13 @@ nav {
 .nav-links a.btn-sm {
     border: 1px solid var(--accent);
     padding: 0.5rem 1.2rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .nav-links a.btn-sm:hover {
     background: var(--accent);
     color: var(--bg);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.25);
 }
 
 /* HERO */
@@ -283,6 +285,10 @@ header h1 {
     width: 20px;
     height: 20px;
     stroke-width: 1.75px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.skill-category:hover h3 i {
+    transform: scale(1.2) rotate(15deg);
 }
 .skill-category ul { list-style: none; }
 .skill-category li { 
@@ -291,6 +297,10 @@ header h1 {
     margin-bottom: 0.5rem; 
     font-size: 1rem; 
     opacity: 0.9; 
+    transition: transform 0.3s ease;
+}
+.skill-category:hover li {
+    transform: translateX(4px);
 }
 .skill-category li::before { 
     content: "→"; 
@@ -358,14 +368,15 @@ header h1 {
     padding: 18px; 
     border-radius: 50%; 
     display: flex; 
-    transition: 0.3s; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     border: 1px solid var(--bg); 
 }
 .project-card:hover .project-link { 
     background: var(--bg); 
     color: var(--accent); 
-    transform: rotate(45deg); 
+    transform: rotate(45deg) scale(1.1); 
     border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
 }
 
 /* EXPERIENCE */
@@ -406,6 +417,12 @@ header h1 {
     font-size: 1.1rem; 
     letter-spacing: 1px;
     margin-top: 2px;
+}
+.exp-content {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.exp-item:hover .exp-content {
+    transform: translateX(10px);
 }
 .exp-content h3 { 
     font-family: var(--font-heading); 
@@ -451,6 +468,10 @@ header h1 {
     width: 20px;
     height: 20px;
     stroke-width: 1.75px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-large:hover svg {
+    transform: translateX(6px) scale(1.15);
 }
 
 /* FOOTER */
