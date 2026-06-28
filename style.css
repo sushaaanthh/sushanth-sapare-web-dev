@@ -215,27 +215,9 @@ header h1 {
     font-size: clamp(2.5rem, 6vw, 3.8rem);
     text-transform: uppercase;
     letter-spacing: 2px;
-    position: relative;
     padding-bottom: 1.2rem;
     margin: 0;
-}
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background-color: var(--accent);
-}
-.section-title::before {
-    content: '';
-    position: absolute;
-    bottom: 1px;
-    left: 60px;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+    border-bottom: 2px solid var(--accent);
 }
 
 /* GLOBAL HOVER EFFECT (LIFT + GLOW + INVERT) */
