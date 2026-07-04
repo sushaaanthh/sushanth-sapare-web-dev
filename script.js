@@ -75,8 +75,8 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // Dual-Element Custom Cursor System
-const cursorInner = document.getElementById('cursorInner');
-const cursorOuter = document.getElementById('cursorOuter');
+let cursorInner = null;
+let cursorOuter = null;
 
 let mouseX = -100;
 let mouseY = -100;
@@ -87,69 +87,88 @@ let outerScale = 1;
 let targetInnerScale = 1;
 let targetOuterScale = 1;
 let isCursorVisible = false;
+let isInitialized = false;
 
-// Listen for mouse movement
-window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    if (!isCursorVisible) {
+function initCursorSystem() {
+    if (isInitialized) return;
+    cursorInner = document.getElementById('cursorInner');
+    cursorOuter = document.getElementById('cursorOuter');
+    if (!cursorInner || !cursorOuter) return;
+    isInitialized = true;
+
+    // Listen for mouse movement
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        if (!isCursorVisible) {
+            isCursorVisible = true;
+            if (cursorInner) cursorInner.style.opacity = '1';
+            if (cursorOuter) cursorOuter.style.opacity = '1';
+            outerX = mouseX;
+            outerY = mouseY;
+        }
+    }, { passive: true });
+
+    // Handle pointer leaving and entering document viewport
+    document.addEventListener('mouseleave', () => {
+        isCursorVisible = false;
+        if (cursorInner) cursorInner.style.opacity = '0';
+        if (cursorOuter) cursorOuter.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', (e) => {
         isCursorVisible = true;
         if (cursorInner) cursorInner.style.opacity = '1';
         if (cursorOuter) cursorOuter.style.opacity = '1';
-        outerX = mouseX;
-        outerY = mouseY;
-    }
-}, { passive: true });
-
-// Handle pointer leaving and entering document viewport
-document.addEventListener('mouseleave', () => {
-    isCursorVisible = false;
-    if (cursorInner) cursorInner.style.opacity = '0';
-    if (cursorOuter) cursorOuter.style.opacity = '0';
-});
-
-document.addEventListener('mouseenter', () => {
-    isCursorVisible = true;
-    if (cursorInner) cursorInner.style.opacity = '1';
-    if (cursorOuter) cursorOuter.style.opacity = '1';
-});
-
-// Interactive State Callbacks via Event Delegation
-const interactiveSelectors = 'a, button, .skill-category, .project-card, .resp-card, .btn-large, .nav-avatar, .footer-back-to-top, [onclick], input, textarea';
-
-document.addEventListener('mouseover', (e) => {
-    const target = e.target.closest(interactiveSelectors);
-    if (target) {
-        if (cursorOuter) cursorOuter.classList.add('cursor-hover');
-        if (cursorInner) cursorInner.classList.add('cursor-hover');
-    }
-});
-
-document.addEventListener('mouseout', (e) => {
-    const target = e.target.closest(interactiveSelectors);
-    if (target) {
-        const related = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(interactiveSelectors) : null;
-        if (related !== target) {
-            if (cursorOuter) cursorOuter.classList.remove('cursor-hover');
-            if (cursorInner) cursorInner.classList.remove('cursor-hover');
+        if (e.clientX && e.clientY) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         }
-    }
-});
+    });
 
-// Mousedown / Mouseup scaling
-window.addEventListener('mousedown', () => {
-    targetInnerScale = 0.85;
-    targetOuterScale = 0.85;
-}, { passive: true });
+    // Interactive State Callbacks via Event Delegation
+    const interactiveSelectors = 'a, button, .skill-category, .project-card, .resp-card, .btn-large, .nav-avatar, .footer-back-to-top, [onclick], input, textarea';
 
-window.addEventListener('mouseup', () => {
-    targetInnerScale = 1;
-    targetOuterScale = 1;
-}, { passive: true });
+    document.addEventListener('mouseover', (e) => {
+        const target = e.target.closest(interactiveSelectors);
+        if (target) {
+            if (cursorOuter) cursorOuter.classList.add('cursor-hover');
+            if (cursorInner) cursorInner.classList.add('cursor-hover');
+        }
+    });
 
-// requestAnimationFrame Engine for smooth tracking & lerping
+    document.addEventListener('mouseout', (e) => {
+        const target = e.target.closest(interactiveSelectors);
+        if (target) {
+            const related = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(interactiveSelectors) : null;
+            if (related !== target) {
+                if (cursorOuter) cursorOuter.classList.remove('cursor-hover');
+                if (cursorInner) cursorInner.classList.remove('cursor-hover');
+            }
+        }
+    });
+
+    // Mousedown / Mouseup scaling
+    window.addEventListener('mousedown', () => {
+        targetInnerScale = 0.85;
+        targetOuterScale = 0.85;
+    }, { passive: true });
+
+    window.addEventListener('mouseup', () => {
+        targetInnerScale = 1;
+        targetOuterScale = 1;
+    }, { passive: true });
+
+    // Start rAF loop
+    requestAnimationFrame(renderCursor);
+}
+
 function renderCursor() {
+    if (!cursorInner || !cursorOuter) {
+        cursorInner = document.getElementById('cursorInner');
+        cursorOuter = document.getElementById('cursorOuter');
+    }
     if (cursorInner && cursorOuter) {
         // Lerp scales for smooth elastic easing on click
         innerScale += (targetInnerScale - innerScale) * 0.2;
@@ -166,4 +185,9 @@ function renderCursor() {
     }
     requestAnimationFrame(renderCursor);
 }
-requestAnimationFrame(renderCursor);
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCursorSystem);
+} else {
+    initCursorSystem();
+}
