@@ -90,7 +90,7 @@ header {
 }
 header h1 { 
     font-family: var(--font-heading); 
-    font-size: clamp(4.5rem, 15vw, 11rem); 
+    font-size: clamp(4.275rem, 14.25vw, 10.45rem); 
     line-height: 0.9; 
     letter-spacing: 0.05em; 
     text-transform: uppercase;
@@ -529,4 +529,90 @@ footer {
 @media (max-width: 768px) {
     .exp-item, .responsibility-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .cursor-inner, .cursor-outer { display: none !important; }
+}
+
+/* SCROLL PROGRESS INDICATOR */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent);
+    z-index: 1001;
+    transform-origin: top left;
+    transform: scaleX(0);
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* DUAL-ELEMENT CUSTOM CURSOR */
+@media (min-width: 769px) {
+    * {
+        cursor: none !important;
+    }
+}
+
+.cursor-inner, .cursor-outer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+    opacity: 0;
+    will-change: transform;
+}
+
+.cursor-inner {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.3s ease;
+}
+
+.cursor-outer {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background-color: transparent;
+    transition: width 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                height 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                background-color 0.25s ease,
+                border-width 0.25s ease,
+                border-color 0.25s ease,
+                opacity 0.3s ease;
+}
+
+.cursor-outer.cursor-hover {
+    width: 48px;
+    height: 48px;
+    border-width: 2px;
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+.cursor-inner.cursor-hover {
+    background-color: var(--accent);
+}
+
+/* 404 ERROR PAGE STYLES */
+.error-title {
+    font-size: clamp(8rem, 25vw, 18rem) !important;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+}
+.btn-glow {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+}
+.btn-glow:hover {
+    background: var(--bg);
+    color: var(--accent);
+    box-shadow: 0 0 35px var(--accent);
+    transform: translateY(-5px) scale(1.05);
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Sushanth Sapare</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Bebas Neue' fill='white'>SS</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;700&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav>
+        <div class="nav-brand" onclick="window.location.href='index.html'">
+            <img src="profile.png" alt="Sushanth" class="nav-avatar">
+        </div>
+        <div class="nav-links">
+            <a href="index.html#arsenal">Technical Arsenal</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#experience">Work Experience</a>
+            <a href="index.html#contact" class="btn-sm">Contact</a>
+        </div>
+    </nav>
+
+    <header id="error" style="height: 100vh;">
+        <!-- SVG Concentric Circles Background -->
+        <div class="hero-bg-circles" aria-hidden="true">
+            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="400" cy="400" r="100" class="ring ring-solid" />
+                <circle cx="400" cy="400" r="180" class="ring ring-dashed-1" />
+                <circle cx="400" cy="400" r="260" class="ring ring-solid-2" />
+                <circle cx="400" cy="400" r="340" class="ring ring-dashed-2" />
+                <circle cx="400" cy="400" r="420" class="ring ring-dashed-3" />
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-pre-header" data-aos="fade-up">
+                <span class="hello-text">ERROR</span>
+                <div class="separator-container">
+                    <span class="line left-line"></span>
+                    <span class="star-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z" />
+                        </svg>
+                    </span>
+                    <span class="line right-line"></span>
+                </div>
+            </div>
+            <h1 class="error-title" data-aos="fade-up" data-aos-delay="100">404</h1>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="200">PAGE NOT FOUND</p>
+            <div style="margin-top: 2.5rem;" data-aos="fade-up" data-aos-delay="300">
+                <a href="index.html" class="btn-large btn-glow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-arrow-left">
+                        <path d="m12 19-7-7 7-7"/>
+                        <path d="M19 12H5"/>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <div class="cursor-inner" id="cursorInner"></div>
+    <div class="cursor-outer" id="cursorOuter"></div>
+</body>
+
+</html>
