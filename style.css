@@ -492,13 +492,15 @@ header h1 {
     border: 1px solid #1f1f1f;
     letter-spacing: 1px;
 }
-.btn-large svg {
+.btn-large svg,
+.btn-large i {
     width: 20px;
     height: 20px;
     stroke-width: 1.75px;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.btn-large:hover svg {
+.btn-large:hover svg,
+.btn-large:hover i {
     transform: translateX(6px) scale(1.15);
 }
 
