@@ -1,12 +1,17 @@
-// Initialize Animations
-AOS.init({ 
-    duration: 800, 
-    once: true,
-    easing: 'ease-out-sine'
-});
+// Initialize Non-Essential Third-Party Scripts
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ 
+            duration: 800, 
+            once: true,
+            easing: 'ease-out-sine'
+        });
+    }
 
-// Initialize Lucide Icons
-lucide.createIcons();
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+});
 
 // Scroll to Top Function
 function scrollToTop() {
@@ -186,7 +191,9 @@ function renderCursor() {
     requestAnimationFrame(renderCursor);
 }
 
-if (document.readyState === 'loading') {
+if ('requestIdleCallback' in window) {
+    requestIdleCallback(initCursorSystem);
+} else if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCursorSystem);
 } else {
     initCursorSystem();

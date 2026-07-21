@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sushanth Sapare | Portfolio</title>
+    <meta name="description" content="Portfolio of Sushanth Sapare - CSE Data Science Student & Creative Web Developer.">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Bebas Neue' fill='white'>SS</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;700&family=Bebas+Neue&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/lucide@latest"></script>
+        rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet"></noscript>
+    
+    <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"></noscript>
+    
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,7 +29,7 @@
 
     <nav>
         <div class="nav-brand" onclick="scrollToTop()">
-            <img src="profile.png" alt="Sushanth" class="nav-avatar">
+            <img src="profile.png" alt="Sushanth" class="nav-avatar" width="45" height="45" fetchpriority="high" decoding="async">
         </div>
         <div class="nav-links">
             <a href="#arsenal">Technical Arsenal</a>
@@ -142,7 +150,7 @@
                     <h3>Sound Voyage</h3>
                     <p>A clinical vocal assessment app created for Samvidh Psych Services.</p>
                 </div>
-                <a href="https://sound-voyage-app.vercel.app/" class="project-link"><i
+                <a href="https://sound-voyage-app.vercel.app/" class="project-link" aria-label="View Sound Voyage Project"><i
                         data-lucide="external-link"></i></a>
             </div>
             <div class="project-card" data-aos="fade-up" data-aos-delay="100">
@@ -151,7 +159,7 @@
                     <p>An AI-powered ATS matcher with smart prioritization and beautiful LaTeX resumes perfectly
                         tailored for the job role.</p>
                 </div>
-                <a href="https://re-zoom-cdbsga6cj-sushanth-sapares-projects.vercel.app/" class="project-link"><i
+                <a href="https://re-zoom-cdbsga6cj-sushanth-sapares-projects.vercel.app/" class="project-link" aria-label="View ReZoom AI Project"><i
                         data-lucide="external-link"></i></a>
             </div>
             <div class="project-card" data-aos="fade-up" data-aos-delay="200">
@@ -159,7 +167,7 @@
                     <h3>Savvy Expense Tracker</h3>
                     <p>Advanced budget analysis tool. Savings made simpler.</p>
                 </div>
-                <a href="https://savvy-expense-tracker-kappa.vercel.app/" class="project-link"><i
+                <a href="https://savvy-expense-tracker-kappa.vercel.app/" class="project-link" aria-label="View Savvy Expense Tracker Project"><i
                         data-lucide="external-link"></i></a>
             </div>
         </div>
@@ -247,8 +255,8 @@
         <span class="footer-back-to-top" onclick="scrollToTop()">BACK TO TOP ↑</span>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
